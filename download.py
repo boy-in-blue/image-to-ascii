@@ -8,4 +8,5 @@ def download(url, saveas):
 if __name__ == '__main__':
     # download('https://hips.hearstapps.com/ghk.h-cdn.co/assets/16/08/gettyimages-464163411.jpg', 'dog.jpg')
 
-    download('https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg', 'cat.jpg')
+    #download('https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg', 'cat.jpg')
+    download('https://cdn4.iconfinder.com/data/icons/animals-177/512/Cat-512.png', 'cat512.jpg')
