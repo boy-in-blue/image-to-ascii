@@ -1,9 +1,9 @@
 from PIL import Image, ImageOps
 import numpy as np
 
-im = Image.open('cat.jpg')
+im = Image.open('dog.jpg')
 im2 = ImageOps.grayscale(im)
-im2.thumbnail((100, 100))
+im2.thumbnail((178, 178))
 # im.thumbnail((50, 100))
 size = w, h = 64, 64
 im = Image.new("1", size, (255))
@@ -48,33 +48,43 @@ class Ascii:
 if __name__ == '__main__':
     a = Ascii()
     b = a.create8bitgrayscale((32, 32), 200)
-    b = a.imagetoarray(im2)
+    b = im2
+    b = b.resize((b.size[0], b.size[1]//2))
+    b = a.imagetoarray(b)
     stringshit = ''
     # for i in range(0, 32, 4):
     #     b[:, i:i+4] = 255 - range(0, 256, 256//8)[i//4]
+    # for i in range(0, len(b), 2):
+    #     for j in range(len(b[i])):
+    #         b[i:i+2, j] = (b[i, j] + b[i+1, j]) // 2
+    # b = np.delete(b, range(1, len(b), 2), 0)
     print(b)
     for i in b:
         for j in i:
             if j >= 255 - 0*32:
-                print('.', end=' ')
+                print('.', end='')
             elif j >= 255 - 1*32:
-                print('+', end=' ')
+                print('+', end='')
             elif j >= 255 - 2*32:
-                print('o', end=' ')
+                print('o', end='')
             elif j >= 255 - 3*32:
-                print('x', end=' ')
+                print('x', end='')
             elif j >= 255 - 4*32:
-                print('X', end=' ')
+                print('X', end='')
             elif j >= 255 - 5*32:
-                print('$', end=' ')
+                print('$', end='')
             elif j >= 255 - 6*32:
-                print('&', end=' ')
+                print('&', end='')
             elif j < 255 - 6*32:
-                print('@', end=' ')
+                print('@', end='')
             else:
-                print(j, end='  ')
+                print(j, end='')
         print()
 
     print(stringshit)
     b = a.arraytoimage(b)
     b.show()
+
+
+# average x[0][0] + x[1][0] and so on
+# todo. document and packaging 
